@@ -1,5 +1,5 @@
 ---
-title: Using kubectl to Create a Deployment
+title: kubectl을 사용하여 배포 만들기
 ---
 
 <!DOCTYPE html>
@@ -17,25 +17,22 @@ title: Using kubectl to Create a Deployment
         <div class="row">
 
          <div class="col-md-8">
-          <h3>Objectives</h3>
+          <h3>목표</h3>
                 <ul>
-                    <li>Learn about application Deployments.</li>
-                    <li>Deploy your first app on Kubernetes with kubectl.</li>
+                    <li>애플리케이션 배포에 대해 배운다.</li>
+                    <li>kubectl로 Kubernetes에 첫 번째 앱을 배포한다.</li>
                 </ul>
             </div>
 
             <div class="col-md-8">
-                <h3>Kubernetes Deployments</h3>
+                <h3>Kubernetes 배포</h3>
                 <p>
-                Once you have a running Kubernetes cluster, you can deploy your containerized applications on top of it.
-                To do so, you create a Kubernetes <b>Deployment</b> configuration. The Deployment instructs Kubernetes
-                how to create and update instances of your application. Once you've created a Deployment, the Kubernetes
-                master schedules mentioned application instances onto individual Nodes in the cluster.
+                    Kubernetes 클러스터가 실행되면 컨테이너 응용 프로그램을 그 위에 배치 할 수 있습니다. 이렇게하려면 <b>Kubernetes</b> 배포 구성을 만듭니다. 배치는 Kubernetes에게 지시합니다. 응용 프로그램의 인스턴스를 만들고 업데이트하는 방법. 배포를 만들면 Kubernetes 마스터 스케줄은 클러스터의 개별 노드에 어플리케이션 인스턴스를 언급합니다.
                 </p>
 
-                <p>Once the application instances are created, a Kubernetes Deployment Controller continuously monitors those instances. If the Node hosting an instance goes down or is deleted, the Deployment controller replaces it. <b>This provides a self-healing mechanism to address machine failure or maintenance.</b></p>
+                <p>응용 프로그램 인스턴스가 생성되면 Kubernetes Deployment Controller는 해당 인스턴스를 지속적으로 모니터링합니다. 인스턴스를 호스팅하는 노드가 중지되거나 삭제되면 배치 제어기가 이를 대체합니다. <b>이는 기계 고장 또는 유지 보수 문제를 해결하는자가 치유 메커니즘을 제공합니다.</b></p>
 
-                <p>In a pre-orchestration world, installation scripts would often be used to start applications, but they did not allow recovery from machine failure.  By both creating your application instances and keeping them running across Nodes, Kubernetes Deployments provide a fundamentally different approach to application management. </p>
+                <p>사전 오케스트레이션 세계에서는 설치 스크립트가 종종 응용 프로그램을 시작하는 데 사용되지만 컴퓨터 오류로부터의 복구는 허용되지 않았습니다. Kubernetes Deployments는 응용 프로그램 인스턴스를 작성하고 노드간에 실행되도록 유지함으로써 응용 프로그램 관리에 근본적으로 다른 접근 방식을 제공합니다. </p>
 
             </div>
 
@@ -43,13 +40,13 @@ title: Using kubectl to Create a Deployment
                 <div class="content__box content__box_lined">
                     <h3>Summary:</h3>
                     <ul>
-                        <li>Deployments</li>
+                        <li>배포</li>
                         <li>Kubectl</li>
                     </ul>
                 </div>
                 <div class="content__box content__box_fill">
                     <p><i>
-                        A Deployment is responsible for creating and updating instances of your application
+                        배포는 응용 프로그램의 인스턴스를 만들고 업데이트하는 역할을 합니다.
                     </i></p>
                 </div>
             </div>
@@ -58,7 +55,7 @@ title: Using kubectl to Create a Deployment
 
         <div class="row">
             <div class="col-md-8">
-                <h2 style="color: #3771e3;">Deploying your first app on Kubernetes</h2>
+                <h2 style="color: #3771e3;">당신의 첫번째 앱을 Kubernetes에 배포하세요.</h2>
             </div>
         </div>
 
@@ -72,9 +69,9 @@ title: Using kubectl to Create a Deployment
         <div class="row">
             <div class="col-md-8">
 
-                <p>You can create and manage a Deployment by using the Kubernetes command line interface, <b>Kubectl</b>. Kubectl uses the Kubernetes API to interact with the cluster. In this module, you'll learn the most common Kubectl commands needed to create Deployments that run your applications on a Kubernetes cluster.</p>
+                <p>Kubernetes 명령 줄 인터페이스 인 <b> Kubectl </b>을 사용하여 배포를 만들고 관리 할 수 ​​있습니다. Kubectl은 Kubernetes API를 사용하여 클러스터와 상호 작용합니다. 이 모듈에서는 Kubernetes 클러스터에서 애플리케이션을 실행하는 배치를 작성하는 데 필요한 가장 일반적인 Kubectl 명령을 학습합니다.</p>
 
-                <p>When you create a Deployment, you'll need to specify the container image for your application and the number of replicas that you want to run. You can change that information later by updating your Deployment; Modules <a href="/docs/tutorials/kubernetes-basics/scale-intro/">5</a> and <a href="/docs/tutorials/kubernetes-basics/update-intro/">6</a> of the bootcamp discuss how you can scale and update your Deployments.</p>
+                <p>배포를 만들 때 응용 프로그램의 컨테이너 이미지와 실행할 복제본 수를 지정해야합니다. 나중에 배치를 업데이트하여 해당 정보를 변경할 수 있습니다. 모듈 <a href="/docs/tutorials/kubernetes-basics/scale-intro/"> 5 </a> 및 <a href="/docs/tutorials/kubernetes-basics/update-intro/"> 6 </a>는 배포를 확장하고 업데이트 할 수있는 방법을 설명합니다.</p>
 
 
 
@@ -82,16 +79,17 @@ title: Using kubectl to Create a Deployment
             </div>
             <div class="col-md-4">
                 <div class="content__box content__box_fill">
-                    <p><i> Applications need to be packaged into one of the supported container formats in order to be deployed on Kubernetes </i></p>
+                    <p><i> 응용 프로그램은 Kubernetes에 배포하기 위해 지원되는 컨테이너 형식 중 하나로 패키지화해야합니다.</i></p>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-8">
-                <p>For our first Deployment, we'll use a <a href="https://nodejs.org">Node.js</a> application packaged in a Docker container. The source code and the Dockerfile are available in the <a href="https://github.com/kubernetes/kubernetes-bootcamp">GitHub repository</a> for the Kubernetes Bootcamp.</p>
+                <p>
+                    첫 번째 배포에서는 Docker 컨테이너에 패키지화 된 <a href="https://nodejs.org"> Node.js </a> 응용 프로그램을 사용합니다. 소스 코드와 Dockerfile은 Kubernetes Bootcamp의 <a href="https://github.com/kubernetes/kubernetes-bootcamp"> GitHub 저장소 </a>에서 사용할 수 있습니다.</p>
 
-                <p>Now that you know what Deployments are, let's go to the online tutorial and deploy our first app!</p>
+                <p>이제 Deployments가 무엇인지 알았으므로 온라인 자습서로 이동하여 첫 번째 앱을 배포하십시오!</p>
 
             </div>
         </div>
@@ -99,7 +97,7 @@ title: Using kubectl to Create a Deployment
 
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-lg btn-success" href="/docs/tutorials/kubernetes-basics/deploy-interactive/" role="button">Start Interactive Tutorial <span class="btn__next">›</span></a>
+                <a class="btn btn-lg btn-success" href="/docs/tutorials/kubernetes-basics/deploy-interactive/" role="button">대화식 튜토리얼 시작하기<span class="btn__next">›</span></a>
             </div>
         </div>
 

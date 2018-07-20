@@ -1,19 +1,17 @@
 ---
-title: Tutorials
+title: 튜토리얼
 ---
 
-This section of the Kubernetes documentation contains tutorials.
-A tutorial shows how to accomplish a goal that is larger than a single
-[task](/docs/tasks/). Typically a tutorial has several sections,
-each of which has a sequence of steps.
-Before walking through each tutorial, you may want to bookmark the 
-[Standardized Glossary](/docs/reference/glossary/) page for later references.
+Kubernetes 문서의 이번 섹션에는 튜토리얼이 포함되어 있습니다.
+튜토리얼에서는 [tasks](/docs/tasks/)보다 큰 목표를 달성하는 방법을 보여줍니다.
+특징적으로 튜토리얼에는 여러 섹션이 있으며, 각 단계에는 일련의 단계가 있습니다.
+각 튜토리얼을 살펴보기 전에 [표준 용어집](/docs/reference/glossary/)을 북마크하면 나중에 참조 할 수 있습니다.
 
-* [Kubernetes Basics](/docs/tutorials/kubernetes-basics/) is an in-depth interactive tutorial that helps you understand the Kubernetes system and try out some basic Kubernetes features.
+* [Kubernetes Basics](/docs/tutorials/kubernetes-basics/)는 Kubernetes 시스템을 이해하고 Kubernetes의 기본 기능을 시험해 볼 수 있는 심층적인 대화 형 튜토리얼입니다.
 
-* [Scalable Microservices with Kubernetes (Udacity)](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
+* [Kubernetes에서 확장 가능한 마이크로서비스 (Udacity)](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)
 
-* [Introduction to Kubernetes (edX)](https://www.edx.org/course/introduction-kubernetes-linuxfoundationx-lfs158x#)
+* [Kubernetes 소개 (edX)](https://www.edx.org/course/introduction-kubernetes-linuxfoundationx-lfs158x#)
 
 * [Hello Minikube](/docs/tutorials/stateless-application/hello-minikube/)
 
@@ -41,7 +39,7 @@ Before walking through each tutorial, you may want to bookmark the
 
 * [Running ZooKeeper, A CP Distributed System](/docs/tutorials/stateful-application/zookeeper/)
 
-#### CI/CD Pipeline
+#### CI/CD 파이프라인
 
 * [Set Up a CI/CD Pipeline with Kubernetes Part 1: Overview](https://www.linux.com/blog/learn/chapter/Intro-to-Kubernetes/2017/5/set-cicd-pipeline-kubernetes-part-1-overview)
 
@@ -51,16 +49,15 @@ Before walking through each tutorial, you may want to bookmark the
 
 * [Set Up CI/CD for a Distributed Crossword Puzzle App on Kubernetes (Part 4)](https://www.linux.com/blog/learn/chapter/intro-to-kubernetes/2017/6/set-cicd-distributed-crossword-puzzle-app-kubernetes-part-4)
 
-#### Connecting Applications
+#### 어플리케이션들의 연결
 
 * [Connecting a Front End to a Back End Using a Service](/docs/tutorials/connecting-apps/connecting-frontend-backend/)
 
-#### Services
+#### 서비스
 
 * [Using Source IP](/docs/tutorials/services/source-ip/)
 
 ### What's next
 
-If you would like to write a tutorial, see
-[Using Page Templates](/docs/home/contribute/page-templates/)
-for information about the tutorial page type and the tutorial template.
+튜토리얼을 쓰고 싶으시다면, 튜토리얼 페이지 타입과 템플릿에 대한 더 많은 정보를 위해 [Using Page Templates](/docs/home/contribute/page-templates/)을 보십시오.
+

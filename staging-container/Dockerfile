@@ -17,7 +17,7 @@ RUN	gem install \
 
 VOLUME /k8sdocs
 
-EXPOSE 4000
+EXPOSE 80
 
 COPY start.sh /start.sh
 WORKDIR /k8sdocs
